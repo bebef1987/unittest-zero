@@ -42,8 +42,8 @@ from unittestzero import Assert
 class TestNewAsserts:
 
     def test_that_are_equal(self):
-        Assert.equal("1","1")
-        Assert.equal(1,1)
+        Assert.equal("1", "1")
+        Assert.equal(1, 1)
 
     def test_that_are_not_equal_throws_error(self):
         try:
@@ -52,8 +52,8 @@ class TestNewAsserts:
             pass
 
     def test_that_items_are_not_equal(self):
-        Assert.not_equal("a","b")
-        Assert.not_equal(1,2)
+        Assert.not_equal("a", "b")
+        Assert.not_equal(1, 2)
 
     def test_that_we_can_check_for_true(self):
         Assert.true(True)
@@ -69,7 +69,7 @@ class TestNewAsserts:
     def test_that_we_can_check_for_false(self):
         Assert.false(False)
         Assert.false("z" in "bad")
-        Assert.false(1==2)
+        Assert.false(1 == 2)
 
     def test_that_we_get_an_exception_if_not_false(self):
         try:
@@ -102,17 +102,17 @@ class TestNewAsserts:
         Assert.is_sorted_ascending([1])
 
     def test_is_sorted_ascending_success_3(self):
-        Assert.is_sorted_ascending([1,2,3])
-    
+        Assert.is_sorted_ascending([1, 2, 3])
+
     def test_is_sorted_ascending_fail(self):
         try:
-            Assert.is_sorted_ascending([1,3,2], "failure message")
+            Assert.is_sorted_ascending([1, 3, 2], "failure message")
         except AssertionError as e:
-            assert e.msg == "failure message"
+            assert e.msg == "2 is not before 3, failure message"
 
     def test_is_sorted_ascending_empty(self):
         Assert.is_sorted_ascending([])
-        
+
     def test_is_sorted_ascending_none(self):
         try:
             Assert.is_sorted_ascending(None)
@@ -123,17 +123,17 @@ class TestNewAsserts:
         Assert.is_sorted_descending([1])
 
     def test_is_sorted_descending_success_3(self):
-        Assert.is_sorted_descending([3,2,1])
-    
+        Assert.is_sorted_descending([3, 2, 1])
+
     def test_is_sorted_descending_fail(self):
         try:
-            Assert.is_sorted_descending([3,1,2], "failure message")
+            Assert.is_sorted_descending([3, 1, 2], "failure message")
         except AssertionError as e:
-            assert e.msg == "failure message"
+            assert e.msg == "1 is not before 2, failure message"
 
     def test_is_sorted_descending_empty(self):
         Assert.is_sorted_descending([])
-        
+
     def test_is_sorted_descending_none(self):
         try:
             Assert.is_sorted_descending(None)
@@ -141,18 +141,18 @@ class TestNewAsserts:
             pass
 
     def test_that_assert_raises_catches_exceptions(self):
-        
+
         Assert.raises(ZeroDivisionError, self._divide_by_zero)
 
     def test_that_we_raise_when_error_not_thrown(self):
         try:
-            Assert.raises(Exception, self._add_num, 5,4)
+            Assert.raises(Exception, self._add_num, 5, 4)
         except AssertionError:
             pass
 
     def test_that_we_can_check_items_contain_something(self):
         Assert.contains("a", "bad")
-        Assert.contains("a", ["a","b","c"])
+        Assert.contains("a", ["a", "b", "c"])
 
     def test_that_items_dont_contain_something(self):
         try:
@@ -160,13 +160,13 @@ class TestNewAsserts:
         except AssertionError as e:
             pass
         try:
-            Assert.contains("d", ["a","b","c"])
+            Assert.contains("d", ["a", "b", "c"])
         except AssertionError as e:
             pass
 
 
     def _divide_by_zero(self):
-        return 1/0
+        return 1 / 0
 
     def _add_num(self, first, second):
         return first + second
