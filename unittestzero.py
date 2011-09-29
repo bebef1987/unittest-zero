@@ -21,6 +21,7 @@
 #
 # Contributor(s): David Burns
 #                 Joel Andersson <janderssn@gmail.com>
+#                 Bebe<florin.strugariu@softvision.ro>
 #
 # Alternatively, the contents of this file may be used under the terms of
 # either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -96,4 +97,20 @@ class Assert:
         try:
             assert needle in haystack
         except AssertionError:
-            raise AssertionError('%s not found in %s' % (needle, haystack))
+            raise AssertionError('%s is not found in %s' % (needle, haystack))
+
+    @classmethod
+    def less(self, first, second, msg=None):
+        assert first < second, msg
+
+    @classmethod
+    def greater(self, first, second, msg=None):
+        assert first > second, msg
+
+    @classmethod
+    def less_equal(self, first, second, msg=None):
+        assert first <= second, msg
+
+    @classmethod
+    def greater_equal(self, first, second, msg=None):
+        assert first >= second, msg

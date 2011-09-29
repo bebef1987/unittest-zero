@@ -39,6 +39,7 @@
 import pytest
 from unittestzero import Assert
 
+
 class TestNewAsserts:
 
     def test_that_are_equal(self):
@@ -79,7 +80,6 @@ class TestNewAsserts:
 
     def test_that_something_is_none(self):
         Assert.none(None)
-
 
     def test_that_if_not_none_exception_thrown(self):
         try:
@@ -164,6 +164,121 @@ class TestNewAsserts:
         except AssertionError as e:
             pass
 
+    def test_less_success(self):
+        Assert.less("1", "2")
+        Assert.less(1, 2)
+
+    def test_less_fail_string(self):
+        try:
+            Assert.less("2", "1")
+        except AssertionError, e:
+            pass 
+
+    def test_less_fail_int(self):
+        try:
+            Assert.less(2, 1)
+        except AssertionError, e:
+            pass 
+
+    def test_less_fail_string_message(self):
+        try:
+            Assert.less("2", "1", "message")
+        except AssertionError, e:
+            pass
+
+    def test_less_fail_int_message(self):
+        try:
+            Assert.less(2, 1, "message")
+        except AssertionError, e:
+            pass
+
+    def test_greater_success(self):
+        Assert.greater("2", "1")
+        Assert.greater(2, 1)
+
+    def test_greater_fail_string(self):
+        try:
+            Assert.greater("1", "2")
+        except AssertionError, e:
+            pass
+
+    def test_greater_fail_int(self):
+        try:
+            Assert.greater(1, 2)
+        except AssertionError, e:
+           pass 
+
+    def test_greater_fail_string_message(self):
+        try:
+            Assert.greater("1", "2", "message")
+        except AssertionError, e:
+            pass
+
+    def test_greater_fail_int_message(self):
+        try:
+            Assert.greater(1, 2, "message")
+        except AssertionError, e:
+           pass 
+
+    def test_greater_equal_success(self):
+        Assert.greater_equal("2", "1")
+        Assert.greater_equal(2, 1)
+        Assert.greater_equal("1", "1")
+        Assert.greater_equal(1, 1)
+
+    def test_greater_equal_fail_string(self):
+        try:
+            Assert.greater_equal("1", "2")
+        except AssertionError, e:
+            pass 
+
+    def test_greater_equal_fail_int(self):
+        try:
+            Assert.greater_equal(1, 2)
+        except AssertionError, e:
+            pass
+
+    def test_greater_equal_fail_string_message(self):
+        try:
+            Assert.greater_equal("1", "2", "message")
+        except AssertionError, e:
+            pass
+
+    def test_greater_equal_fail_int_message(self):
+        try:
+            Assert.greater_equal(1, 2, "message")
+        except AssertionError, e:
+            pass 
+
+    def test_less_equal_success(self):
+        Assert.less_equal("1", "2")
+        Assert.less_equal(1, 2)
+        Assert.less_equal("1", "1")
+        Assert.less_equal(1, 1)
+
+    def test_less_equal_fail_string(self):
+        try:
+            Assert.less_equal("2", "1")
+        except AssertionError, e:
+            pass 
+
+    def test_less_equal_fail_int(self):
+        try:
+            Assert.less_equal(2, 1)
+        except AssertionError, e:
+            pass
+
+    def test_less_equal_fail_string_message(self):
+        try:
+            Assert.less_equal("2", "1", "message")
+        except AssertionError, e:
+            pass 
+
+    def test_less_equal_fail_int_message(self):
+        try:
+            Assert.less_equal(2, 1, "message")
+        except AssertionError, e:
+            pass
 
     def _divide_by_zero(self):
         return 1 / 0
